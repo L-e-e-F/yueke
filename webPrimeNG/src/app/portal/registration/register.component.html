@@ -1,0 +1,83 @@
+<p-toast position="top-center"></p-toast>
+<div class="ui-fluid">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-messages ui-widget ui-corner-all ui-messages-success"
+                 style="margin: 0 0 1em 0; display: block">
+                <span class="fa fa-pencil-square-o fa-lg"></span>
+                <ul>
+                    <li>
+                        <span class="ui-messages-summary" style="font-size:16px">请填写登录信息，*为必填项.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="card no-margin">
+                <form [formGroup]="myForm">
+                    <div class="ui-g form-group">
+                        <div class="ui-g-12 ui-md-2">
+                            <label><span style="color:red;">* </span>请输入姓名:</label>
+                        </div>
+                        <div class="ui-g-12 ui-md-4">
+                            <input type="text" pInputText formControlName="userName" [(ngModel)]="add.userName"/>
+                        </div>
+
+                        <div class="ui-g-12 ui-md-2">
+                            <label><span style="color:red;">* </span>账户:</label>
+                        </div>
+                        <div class="ui-g-12 ui-md-4">
+                            <input type="text" pInputText formControlName="account" [(ngModel)]="add.account"/>
+                        </div>
+                        <div class="ui-g-12 ui-md-2">
+                            <label><span style="color:red;">* </span>密码:</label>
+                        </div>
+                        <div class="ui-g-12 ui-md-4">
+                            <input formControlName="password" pPassword type="password" [(ngModel)]="add.password"/>
+                        </div>
+                        <div class="ui-g-12 ui-md-2">
+                            <label> 角色:</label>
+                        </div>
+                        <div class="ui-g-12 ui-md-4">
+                            <p-dropdown
+                                [options]="statusOptions"
+                                [(ngModel)]="add.role"
+                                placeholder="选择角色"
+                                formControlName="role"
+                                [showClear]="true"
+                                id="color"
+                            ></p-dropdown>
+                        </div>
+                        <div class="ui-g-12 ui-md-2 button-pane">
+                            <button
+                                type="button"
+                                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                                role="button"
+                                aria-disabled="false"
+                                (click)="onSubmit()"
+                            >
+                                <p-blockUI [blocked]="blockedLoginBtn"></p-blockUI>
+                                <span class="ui-button-text ui-c">提交</span>
+                            </button>
+                        </div>
+                        <div class="ui-g-12 ui-md-2 button-pane">
+                            <button
+                                type="button"
+                                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                                role="button"
+                                aria-disabled="false"
+                                (click)="onCancel()"
+                                [disabled]="blockedLoginBtn"
+                            >
+                                <span class="ui-button-text ui-c">返回</span>
+                            </button>
+                        </div>
+                        <div class="ui-g-12 ui-md-4"></div>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
